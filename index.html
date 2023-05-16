@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String parser</title>
+    <script>
+// functions
+function parse() {
+    let input = document.getElementById("input").value;
+    eval(`input=${document.getElementById("code").value};`);
+    output.innerHTML = input;
+}
+function toClipboard() {
+    const output = document.getElementById("output");
+    output.select();
+    output.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(output.value);
+    document.getElementById("copytext").value = "Copied to clipboard";
+}
+    </script>
+    <style>
+textarea {
+    width:100%;
+}
+input {
+    height:3em;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body is="main">
+    <textarea id="input">Paste input here...</textarea>
+    <br/>
+    <textarea id="code">Write code here... e.g.: input.split(" ");</textarea>
+    <br/>
+    <input id="submit" type="button" onclick="parse();" value="Parse input"/>
+    <br/>
+    <textarea id="output">Output will appear here.</textarea>
+    <br/>
+    <input id="copytext" type="button" onclick="toClipboard();" value="Copy to clipboard"/>
+</body>
+</html>
